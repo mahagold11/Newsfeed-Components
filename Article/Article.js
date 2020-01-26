@@ -91,22 +91,36 @@ const data = [
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
 */
 
-function articleCreator(title, dataDate) {
+function articleCreator(title, dataDate, first, second, third) {
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
-  const articleParagraph = document.createElement('p');
+  const articleDate = document.createElement('p');
+  const articleFirstParagraph = document.createElement('p');
+  const articleSecondParagraph = document.createElement('p');
+  const articleThirdParagraph = document.createElement('p');
   const articleSpan = document.createElement('span');
 
   article.append(articleTitle);
-  article.append(articleParagraph);
+  article.append(articleDate);
   article.append(articleSpan);
+  article.append(articleFirstParagraph);
+  article.append(articleSecondParagraph);
+  article.append(articleThirdParagraph);
   
   article.classList.add('article');
-  articleParagraph.classList.add('date');
+  articleDate.classList.add('date');
   articleSpan.classList.add('expandButton');
+  articleFirstParagraph.classList.add('paragraph');
+  articleSecondParagraph.classList.add('paragraph');
+  articleThirdParagraph.classList.add('paragraph');
 
   articleTitle.textContent = title;
-  
+  articleDate.textContent = dataDate;
+  articleFirstParagraph.textContent = first;
+  articleSecondParagraph.textContent = second;
+  articleThirdParagraph.textContent = third;
+
+
   return article;
 }
 
@@ -115,7 +129,7 @@ const articles = document.querySelector('.articles');
 /////
 
 data.forEach(data => {
-  articles.append(articleCreator(data.title, data.date))
+  articles.append(articleCreator(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
 });
 
 
